@@ -1,24 +1,36 @@
-import * as React from "react";
-import Avatar from "@mui/material/Avatar";
-import AvatarGroup from "@mui/material/AvatarGroup";
-import { Stack } from "@mui/system";
+import { Virtual } from 'swiper';
+import { Swiper, SwiperSlide } from 'swiper/react';
+// Import Swiper styles
+import 'swiper/css';
+import 'swiper/css/virtual';
+import { Box } from '@mui/material';
 
-function GroupAvatars() {
-  return (
-    <Stack direction="row"  sx={{bgcolor:"#5B5B5B", p:4}}>
-      <AvatarGroup spacing={'-20'} sx={{ justifyContent: "flex-end"}}>
-        <Avatar
-          onClick={() => {console.log("clicked")}}
-          src="https://images.unsplash.com/photo-1661311819282-42a3ab1258dd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80"
-          sx={{width:56, height:56, border:0}}
-        />
-        <Avatar alt="Nome" sx={{width:56, height:56}} />
-        <Avatar alt="Nome" sx={{width:56, height:56}}/>
-        <Avatar alt="Nome" sx={{width:56, height:56}}/>
-        <Avatar alt="Nome" sx={{width:56, height:56}}/>
-      </AvatarGroup>
-    </Stack>
+function Carrossel() {
+
+  const ArrayTeste = [
+    { url: 'https://picsum.photos/200/300/?random', id: '1' },
+    { url: 'https://images.unsplash.com/photo-1659535824233-966cc8de61a5?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1172&q=80', id: '2' },
+    { url: 'https://images.unsplash.com/photo-1659535907680-0e219b46c01d?ixlib=rb-1.2.1&ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80', id: '3' },
+  ];
+
+  const slides = ArrayTeste.map(
+    (item, index) =>
+      <div key={index + 1}>
+        <img src={item.url} id={item.id} alt='slide' key={index + 1} />
+      </div>
   );
-}
 
-export default GroupAvatars;
+  return (
+    <Box bgcolor={'#c4c4c4'}>
+      <Swiper modules={[Virtual]} spaceBetween={5} slidesPerView={10} virtual>
+        {slides.map((slideContent, index) => (
+          <SwiperSlide key={slideContent} virtualIndex={index}>
+            {slideContent}
+          </SwiperSlide>
+        ))}
+      </Swiper>
+    </Box>
+  );
+};
+
+export default Carrossel;

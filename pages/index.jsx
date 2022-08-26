@@ -1,17 +1,19 @@
 import Head from 'next/head';
 import React from 'react';
-import GroupAvatars from '../components/carrossel';
 import CssBaseline from '@mui/material/CssBaseline';
+import Carrossel from '../components/carrossel';
+import Informacoes from '../components/informacoes';
 
 export default function Home() {
   return (
     <div >
-      <CssBaseline/>
+      <CssBaseline />
       <Head>
         <title>Age of Empires II</title>
       </Head>
 
-      <GroupAvatars />
+      <Carrossel />
+      <Informacoes />
       <div id="root">
       </div>
     </div>
