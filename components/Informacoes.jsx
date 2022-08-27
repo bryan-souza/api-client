@@ -1,4 +1,5 @@
-import { Avatar, Box } from "@mui/material";
+import { ShieldOutlined, ExpandMore } from "@mui/icons-material";
+import { Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Typography } from "@mui/material";
 
 
 function CardHeader({ children }) {
@@ -6,6 +7,8 @@ function CardHeader({ children }) {
     <Box
       display={'flex'}
       flexDirection={'row'}
+      flexGrow={0}
+      flexShrink={0}
       width={'100%'}
       height={'10%'}
       padding={'29px'}
@@ -39,7 +42,6 @@ function CardTitle({ title, subtitle }) {
   )
 }
 
-
 function UnitTypes({ urlArray }) {
   const imageArray = urlArray.map(
     (url, index) => 
@@ -64,10 +66,77 @@ function UnitTypes({ urlArray }) {
   )
 }
 
+function CardBody({ children }) {
+  return (
+    <Box
+      display={'flex'}
+      flexDirection={'column'}
+      flexGrow={1}
+      flexShrink={0}
+      padding={'29px'}
+      gap={2}
+    >
+      {children}
+    </Box>
+  );
+}
+
+function ListItem({ children }) {
+  return (
+    <Box
+      display={'flex'}
+      flexGrow={1}
+      flexShrink={0}
+      paddingX={'20px'}
+      borderRadius={5}
+      bgcolor={'#5b5b5b'}
+      fontSize={'22px'}
+      color={'#ffffff'}
+    >
+      {children}
+    </Box>
+  );
+}
+
+function CivBonuses({ bonuses }) {
+  const bonusEntries = bonuses.map(
+    (item, index) =>
+      <ListItem key={index}>{item}</ListItem>
+  );
+
+  return (
+    <Accordion>
+      <AccordionSummary expandIcon={<ExpandMore sx={{ fontSize: 40 }}/>}>
+        <Box display={'flex'} flexDirection={'row'} gap={1} >
+          <ShieldOutlined sx={{ fontSize: 40 }} />
+          <Typography typography={'h4'}>Bônus de Civilização</Typography>
+        </Box>
+      </AccordionSummary>
+
+      <AccordionDetails>
+        <Box display={'flex'} flexDirection={'column'} gap={1} >
+          {bonusEntries}
+        </Box>
+      </AccordionDetails>
+    </Accordion>
+  );
+}
+
+
+
+
+
 function Informacoes() {
-  const arr = [
+  const imgArr = [
     'https://static.wikia.nocookie.net/ageofempires/images/1/1a/Longswordsman_aoe2DE.png',
     'https://static.wikia.nocookie.net/ageofempires/images/e/e9/Monk_aoe2DE.png'
+  ]
+
+  const bonusArr = [
+    "Infantry moves 15% faster",
+    "Lumberjacks work 15% faster",
+    "Siege weapons reload 20% faster",
+    "Sheep cannot be stolen if within one Celt unit's line of sight"
   ]
 
   return (
@@ -80,8 +149,12 @@ function Informacoes() {
     >
       <CardHeader>
         <CardTitle title='Celts' subtitle='Age of Kings Expansion'/>
-        <UnitTypes urlArray={arr} />
+        <UnitTypes urlArray={imgArr} />
       </CardHeader>
+
+      <CardBody>
+        <CivBonuses bonuses={bonusArr} />
+      </CardBody>
     </Box>
   );
 }
