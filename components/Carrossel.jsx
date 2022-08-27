@@ -23,7 +23,7 @@ function Carrossel() {
     <Box bgcolor={'#c4c4c4'} p={1}>
       <Swiper modules={[Virtual]} spaceBetween={5} slidesPerView={16} virtual>
         {slides.map((slideContent, index) => (
-          <SwiperSlide key={slideContent} virtualIndex={index}>
+          <SwiperSlide key={slideContent.key} virtualIndex={index}>
             {slideContent}
           </SwiperSlide>
         ))}
