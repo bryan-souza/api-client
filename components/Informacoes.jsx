@@ -1,46 +1,8 @@
-import { ShieldOutlined, ExpandMore } from "@mui/icons-material";
+import { Add, ExpandMore } from "@mui/icons-material";
 import { Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Typography } from "@mui/material";
+import { Card, CardHeader, CardTitle, CardBody } from './Card';
+import { ListItem } from './List';
 
-
-function CardHeader({ children }) {
-  return (
-    <Box
-      display={'flex'}
-      flexDirection={'row'}
-      flexGrow={0}
-      flexShrink={0}
-      width={'100%'}
-      height={'10%'}
-      padding={'29px'}
-    >
-      {children}
-    </Box>
-  );
-}
-
-function CardTitle({ title, subtitle }) {
-  return (
-    <Box
-      display={'flex'}
-      flexDirection={'column'}
-      flexGrow={1}
-      flexShrink={0}
-    >
-      <Box
-        typography={'h3'}
-        color={'#ffffff'}
-      >
-        {title}
-      </Box>
-      <Box 
-        typography={'subtitle1'}
-        color={'#c8c4c4'}
-      >
-        {subtitle}
-      </Box>
-    </Box>
-  )
-}
 
 function UnitTypes({ urlArray }) {
   const imageArray = urlArray.map(
@@ -66,38 +28,6 @@ function UnitTypes({ urlArray }) {
   )
 }
 
-function CardBody({ children }) {
-  return (
-    <Box
-      display={'flex'}
-      flexDirection={'column'}
-      flexGrow={1}
-      flexShrink={0}
-      padding={'29px'}
-      gap={2}
-    >
-      {children}
-    </Box>
-  );
-}
-
-function ListItem({ children }) {
-  return (
-    <Box
-      display={'flex'}
-      flexGrow={1}
-      flexShrink={0}
-      paddingX={'20px'}
-      borderRadius={5}
-      bgcolor={'#5b5b5b'}
-      fontSize={'22px'}
-      color={'#ffffff'}
-    >
-      {children}
-    </Box>
-  );
-}
-
 function CivBonuses({ bonuses }) {
   const bonusEntries = bonuses.map(
     (item, index) =>
@@ -108,7 +38,7 @@ function CivBonuses({ bonuses }) {
     <Accordion>
       <AccordionSummary expandIcon={<ExpandMore sx={{ fontSize: 40 }}/>}>
         <Box display={'flex'} flexDirection={'row'} gap={1} >
-          <ShieldOutlined sx={{ fontSize: 40 }} />
+          <Add sx={{ fontSize: 40 }} />
           <Typography typography={'h4'}>Bônus de Civilização</Typography>
         </Box>
       </AccordionSummary>
@@ -140,13 +70,7 @@ function Informacoes() {
   ]
 
   return (
-    <Box
-      bgcolor={'#5b5b5b'}
-      margin={'auto'}
-      width={'90%'}
-      height={'auto'}
-      borderRadius={5}
-    >
+    <Card>
       <CardHeader>
         <CardTitle title='Celts' subtitle='Age of Kings Expansion'/>
         <UnitTypes urlArray={imgArr} />
@@ -155,7 +79,7 @@ function Informacoes() {
       <CardBody>
         <CivBonuses bonuses={bonusArr} />
       </CardBody>
-    </Box>
+    </Card>
   );
 }
 
