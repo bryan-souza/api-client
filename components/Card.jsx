@@ -69,6 +69,24 @@ function CardBody({ children }) {
   );
 }
 
+function InlineCard({ children }) {
+  return (
+    <Box
+      display={'flex'}
+      flexDirection={'row'}
+      flexGrow={1}
+      flexShrink={0}
+      gap={1}
+      paddingX={'16px'}
+      alignItems={'center'}
+      height={'68px'}
+      borderRadius={2}
+      bgcolor={'#ffffff'}
+    >
+      {children}
+    </Box>
+  );
+}
 
-export { Card, CardHeader, CardTitle, CardBody };
+export { Card, CardHeader, CardTitle, CardBody, InlineCard };
 export default Card;

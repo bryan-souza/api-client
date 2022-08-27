@@ -1,7 +1,9 @@
-import { Add, ExpandMore } from "@mui/icons-material";
-import { Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Typography } from "@mui/material";
-import { Card, CardHeader, CardTitle, CardBody } from './Card';
+import axios from 'axios';
+import { Add, ExpandMore, Shield } from "@mui/icons-material";
+import { Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Skeleton, Typography } from "@mui/material";
+import { Card, CardHeader, CardTitle, CardBody, InlineCard } from './Card';
 import { ListItem } from './List';
+import { useState } from 'react';
 
 
 function UnitTypes({ urlArray }) {
@@ -26,6 +28,34 @@ function UnitTypes({ urlArray }) {
       {imageArray}
     </Box>
   )
+}
+
+function UniqueUnit({ url }) {
+  const [unitData, setUnitData] = useState(null);
+
+  axios({
+    method: 'GET',
+    url: url
+  })
+  .then(({ data }) => {
+    setUnitData(data);
+  });
+
+  if (!unitData) {
+    return (
+      <InlineCard>
+        <Skeleton variant='circular' width={40} height={40} />
+	      <Skeleton variant='text' sx={{ fontSize: '2.125rem', width: '100%' }} />
+      </InlineCard>
+    );
+  }
+
+  return (
+    <InlineCard>
+      <Shield sx={{ fontSize: 40 }} />
+      <Typography typography={'h4'}>{unitData.name}</Typography>
+    </InlineCard>
+  );
 }
 
 function CivBonuses({ bonuses }) {
@@ -77,6 +107,7 @@ function Informacoes() {
       </CardHeader>
 
       <CardBody>
+	<UniqueUnit url='/api/unit/woad_raider' />
         <CivBonuses bonuses={bonusArr} />
       </CardBody>
     </Card>
