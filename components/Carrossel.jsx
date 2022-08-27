@@ -5,6 +5,9 @@ import 'swiper/css';
 import 'swiper/css/virtual';
 import { Box } from '@mui/material';
 
+// TODO: Replace '<img />' calls with <Image />
+// import Image from 'next/image';
+
 function Carrossel() {
 
   const ArrayTeste = [
@@ -21,7 +24,7 @@ function Carrossel() {
   );
 
   return (
-    <Box bgcolor={'#c4c4c4'}>
+    <Box bgcolor={'#c4c4c4'} p={1}>
       <Swiper modules={[Virtual]} spaceBetween={5} slidesPerView={10} virtual>
         {slides.map((slideContent, index) => (
           <SwiperSlide key={slideContent} virtualIndex={index}>

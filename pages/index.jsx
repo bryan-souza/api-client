@@ -1,6 +1,8 @@
 import Head from 'next/head';
 import React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
+import { Container } from '@mui/material';
+
 import Carrossel from '../components/Carrossel';
 import Informacoes from '../components/Informacoes';
 import Page from '../components/Page';
@@ -14,7 +16,10 @@ export default function Home() {
       </Head>
 
       <Carrossel />
-      <Informacoes />
+
+      <Container>
+        <Informacoes />
+      </Container>
     </Page>
   )
 }
