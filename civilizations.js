@@ -84,10 +84,6 @@ const civilizations = [
         "url": "https://static.wikia.nocookie.net/ageofempires/images/c/cb/CivIcon-Ethiopians.png"
     },
     {
-        "id": 22,
-        "url": "https://static.wikia.nocookie.net/ageofempires/images/2/24/CivIcon-Goths.png"
-    },
-    {
         "id": 23,
         "url": "https://static.wikia.nocookie.net/ageofempires/images/5/5e/CivIcon-Incas.png"
     },
@@ -98,10 +94,6 @@ const civilizations = [
     {
         "id": 25,
         "url": "https://static.wikia.nocookie.net/ageofempires/images/e/e1/CivIcon-Italians.png"
-    },
-    {
-        "id": 26,
-        "url": "https://static.wikia.nocookie.net/ageofempires/images/9/9a/CivIcon-Japanese.png"
     },
     {
         "id": 27,
