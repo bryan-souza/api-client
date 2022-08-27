@@ -1,9 +1,10 @@
 import axios from 'axios';
-import { Add, ExpandMore, Shield } from "@mui/icons-material";
+import { useState } from 'react';
+
+import { Add, ExpandMore, Shield, Engineering } from "@mui/icons-material";
 import { Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Skeleton, Typography } from "@mui/material";
 import { Card, CardHeader, CardTitle, CardBody, InlineCard } from './Card';
 import { ListItem } from './List';
-import { useState } from 'react';
 
 
 function UnitTypes({ urlArray }) {
@@ -58,6 +59,34 @@ function UniqueUnit({ url }) {
   );
 }
 
+function UniqueTech({ url }) {
+  const [techData, setTechData] = useState(null);
+
+  axios({
+    method: 'GET',
+    url: url
+  })
+  .then(({ data }) => {
+    setTechData(data);
+  });
+
+  if (!techData) {
+    return (
+      <InlineCard>
+        <Skeleton variant='circular' width={40} height={40} />
+	      <Skeleton variant='text' sx={{ fontSize: '2.125rem', width: '100%' }} />
+      </InlineCard>
+    );
+  }
+
+  return (
+    <InlineCard>
+      <Engineering sx={{ fontSize: 40 }} />
+      <Typography typography={'h4'}>{techData.name}</Typography>
+    </InlineCard>
+  );
+}
+
 function CivBonuses({ bonuses }) {
   const bonusEntries = bonuses.map(
     (item, index) =>
@@ -107,7 +136,8 @@ function Informacoes() {
       </CardHeader>
 
       <CardBody>
-	<UniqueUnit url='/api/unit/woad_raider' />
+	      <UniqueUnit url='/api/unit/woad_raider' />
+        <UniqueTech url='/api/technology/furor_celtica' />
         <CivBonuses bonuses={bonusArr} />
       </CardBody>
     </Card>
