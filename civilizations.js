@@ -70,6 +70,62 @@ const civilizations = [
     {
         "id": 18,
         "url": "https://static.wikia.nocookie.net/ageofempires/images/c/c9/CivIcon-Vikings.png"
+    },
+    {
+        "id": 19,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/7/71/CivIcon-Berbers.png"
+    },
+    {
+        "id": 20,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/7/79/CivIcon-Burmese.png"
+    },
+    {
+        "id": 21,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/c/cb/CivIcon-Ethiopians.png"
+    },
+    {
+        "id": 22,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/2/24/CivIcon-Goths.png"
+    },
+    {
+        "id": 23,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/5/5e/CivIcon-Incas.png"
+    },
+    {
+        "id": 24,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/8/8b/CivIcon-Indians.png"
+    },
+    {
+        "id": 25,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/e/e1/CivIcon-Italians.png"
+    },
+    {
+        "id": 26,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/9/9a/CivIcon-Japanese.png"
+    },
+    {
+        "id": 27,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/e/ec/CivIcon-Khmer.png"
+    },
+    {
+        "id": 28,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/6/68/CivIcon-Magyars.png"
+    },
+    {
+        "id": 29,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/8/80/CivIcon-Malians.png"
+    },
+    {
+        "id": 30,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/6/60/CivIcon-Portuguese.png"
+    },
+    {
+        "id": 31,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/1/12/CivIcon-Slavs.png"
+    },
+    {
+        "id": 32,
+        "url": "https://static.wikia.nocookie.net/ageofempires/images/0/07/CivIcon-Vietnamese.png"
     }
 ];
 
