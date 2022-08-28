@@ -3,19 +3,28 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/virtual';
+import { useContext } from 'react';
 import { Box } from '@mui/material';
 import Image from 'next/image';
-import civilizations from '../civilizations';
 
-// TODO: Replace '<img />' calls with <Image />
-// import Image from 'next/image';
+import civilizations from '../civilizations';
+import { context } from '../components/CivContext';
 
 function Carrossel() {
+  const { setCivId } = useContext(context);
 
   const slides = civilizations.map(
     (item, index) =>
       <div key={index + 1}>
-        <Image src={item.url} id={item.id} alt='slide' onClick={() => { console.log(item.id) }} key={index + 1} width={80} height={80} />
+        <Image
+          id={item.id}
+          key={index + 1}
+          src={item.url}
+          alt='slide'
+          onClick={() => setCivId(item.id)}
+          width={80}
+          height={80}
+        />
       </div>
   );
 

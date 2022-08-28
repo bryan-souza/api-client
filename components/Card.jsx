@@ -4,7 +4,8 @@ function Card({ children }) {
   return (
     <Box
       bgcolor={'#5b5b5b'}
-      margin={'auto'}
+      marginX={'auto'}
+      marginY={5}
       width={'50%'}
       height={'auto'}
       borderRadius={5}

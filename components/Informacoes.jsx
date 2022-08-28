@@ -1,10 +1,12 @@
 import axios from 'axios';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 
 import { Add, ExpandMore, Shield, Engineering } from "@mui/icons-material";
 import { Accordion, AccordionDetails, AccordionSummary, Avatar, Box, Skeleton, Typography } from "@mui/material";
 import { Card, CardHeader, CardTitle, CardBody, InlineCard } from './Card';
 import { ListItem } from './List';
+
+import { context } from '../components/CivContext';
 
 // Data manipulation functions
 function extractIdFromUrl(url) {
@@ -147,17 +149,20 @@ function CivBonuses({ civData }) {
 
 
 // Main component
-function Informacoes({ civId }) {
+function Informacoes() {
+  const { civId } = useContext(context);
   const [civData, setCivData] = useState(null);
 
   useEffect(() => {
-      axios({
-        method: 'GET',
-        baseURL: '/api/civilization',
-        url: civId.toString()
-      })
-      .then(({ data }) => setCivData(data))
-      .catch((err) => console.log(err));
+      if (civId) {
+        axios({
+          method: 'GET',
+          baseURL: '/api/civilization',
+          url: civId.toString()
+        })
+        .then(({ data }) => setCivData(data))
+        .catch((err) => console.log(err));
+      }
   }, [civId]);
 
 
@@ -165,6 +170,8 @@ function Informacoes({ civId }) {
     'https://static.wikia.nocookie.net/ageofempires/images/1/1a/Longswordsman_aoe2DE.png',
     'https://static.wikia.nocookie.net/ageofempires/images/e/e9/Monk_aoe2DE.png'
   ]
+
+  if (!civId) return <div />
 
   return (
     <Card>
