@@ -7,7 +7,7 @@ function ListItem({ children }) {
       flexGrow={1}
       flexShrink={0}
       paddingX={'20px'}
-      borderRadius={5}
+      borderRadius={2}
       bgcolor={'#5b5b5b'}
       fontSize={'22px'}
       color={'#ffffff'}

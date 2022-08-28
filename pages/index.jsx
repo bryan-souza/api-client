@@ -18,7 +18,7 @@ export default function Home() {
       <Carrossel />
 
       <Container>
-        <Informacoes />
+        <Informacoes civId={4} />
       </Container>
     </Page>
   )
