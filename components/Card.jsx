@@ -32,41 +32,6 @@ function CardHeader({ children }) {
   );
 }
 
-function CardTitle({ civData }) {
-  if (!civData) {
-    return (
-      <Box
-        display={'flex'}
-        flexDirection={'column'}
-        flexGrow={1}
-        flexShrink={0}
-      >
-        <Skeleton variant='text' sx={{ fontSize: '3rem', width: '100%' }}/>
-        <Skeleton variant='text' sx={{ fontSize: '1rem', width: '100%' }}/>
-      </Box>
-    );
-  }
-
-
-  return (
-    <Box
-      display={'flex'}
-      flexDirection={'column'}
-      flexGrow={1}
-      flexShrink={0}
-    >
-      <Box typography={'h3'} color={'#ffffff'}>
-        {civData.name}
-      </Box>
-      <Box typography={'subtitle1'} color={'#c8c4c4'}>
-        {`${civData.expansion} Expansion`}
-      </Box>
-    </Box>
-  );
-
-  
-}
-
 function CardBody({ children }) {
   return (
     <Box
@@ -101,5 +66,5 @@ function InlineCard({ children }) {
   );
 }
 
-export { Card, CardHeader, CardTitle, CardBody, InlineCard };
+export { Card, CardHeader, CardBody, InlineCard };
 export default Card;

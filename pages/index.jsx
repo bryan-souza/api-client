@@ -24,7 +24,7 @@ export default function Home() {
       <Box
         width={'100%'}
         height={'100%'}
-        sx={{ overflowX: 'hidden', overflowY: 'scroll' }}
+        sx={{ overflowX: 'hidden', overflowY: 'auto' }}
       >
         <Informacoes />
       </Box>
