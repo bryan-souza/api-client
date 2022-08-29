@@ -27,7 +27,7 @@ function Informacoes() {
     setCivData(null);
     setUnitData(null);
     setTechData(null);
-    
+
     if (civId) {
       axios({
         method: 'GET',
@@ -43,23 +43,20 @@ function Informacoes() {
   // Unique unit data fetcher
   useEffect(() => {
     if (civData) {
-      const unitArr = civData.unique_unit.map(
-        async (url) => {
+      const promiseArr = civData.unique_unit.map(
+        (url) => {
           const unitId = extractIdFromUrl(url);
 
-          const request = await axios({
+          return axios({
             method: 'GET',
             baseURL: '/api/unit',
             url: unitId.toString()
-          })
-          .then(({ data }) => data)
-          .catch((err) => console.log(err));
-
-          return request;
+          });
         }
       );
 
-      setUnitData(unitArr);
+
+      Promise.all(promiseArr).then((res) => setUnitData(res.map((item) => item.data)));
     }
   }, [civData]);
 
@@ -67,23 +64,19 @@ function Informacoes() {
   // Unique technology data fetcher
   useEffect(() => {
     if (civData) {
-      const techArr = civData.unique_tech.map(
-        async (url) => {
+      const promiseArr = civData.unique_tech.map(
+        (url) => {
           const techId = extractIdFromUrl(url);
 
-          const response = await axios({
+          return axios({
             method: 'GET',
             baseURL: '/api/technology',
             url: techId.toString()
-          })
-          .then(({ data }) => data)
-          .catch((err) => console.log(err));
-
-          return response;
+          });
         }
       );
       
-      setTechData(techArr);
+      Promise.all(promiseArr).then((res) => setTechData(res.map((item) => item.data)));
     }
   }, [civData]);
 
